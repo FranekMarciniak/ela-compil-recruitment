@@ -8,7 +8,7 @@ import React, {
 import { findDOMNode } from "react-dom";
 import interactFunc from "interactjs";
 type Props = {
-  children: ReactElement<any>;
+  children: ReactElement;
   draggable?: boolean;
   resizable?: boolean;
   draggableOptions?: any;
