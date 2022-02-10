@@ -1,0 +1,14 @@
+* {
+  font-family: Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+}
+h3 {
+  margin: auto 0;
+}

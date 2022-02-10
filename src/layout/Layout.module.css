@@ -1,0 +1,13 @@
+.container {
+  background: #f7f6f9;
+  width: 100%;
+  /* height is set temporary*/
+  min-height: 100vh;
+}
+
+.items__container {
+  max-width: 1024px;
+  padding: 15px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
