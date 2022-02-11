@@ -1,19 +1,27 @@
 import React from "react";
 import styles from "./ItemCard.module.css";
-import Bulb from "../images/lightbulb-line.svg";
+import imgPicker from "../utils/imgPicker";
+import formatType from "../utils/typeFormat";
+import formatConnection from "../utils/connectionFormat";
+type Props = {
+  name: string;
+  type: string;
+  connection: string;
+  onClick: () => void;
+};
 
-type Props = {};
-
-function ItemCard({}: Props) {
+function ItemCard({ name, type, connection, onClick }: Props) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onClick}>
       <div className={styles.card__header}>
-        <img src={Bulb} className={styles.image__wrapper} />
-        <h3 className={styles.title}>Smart Temperature Sensor</h3>
+        <img src={imgPicker(type)} className={styles.image__wrapper} />
+        <h3 className={styles.title}>{name}</h3>
       </div>
       <div className={styles.card__info}>
-        <p className={styles.type__paragraph}>temperatureSensor</p>
-        <p className={styles.connection__paragraph}>poorConnection</p>
+        <p className={styles.type__paragraph}>{formatType(type)}</p>
+        <p className={styles[`connection__paragraph--${connection}`]}>
+          {formatConnection(connection)}
+        </p>
       </div>
     </div>
   );

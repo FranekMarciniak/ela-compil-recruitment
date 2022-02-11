@@ -11,8 +11,12 @@
   text-align: center;
   width: 95%;
   word-break: break-word;
+  cursor: pointer;
+  transition: all 0.4s;
 }
-
+.container:hover {
+  background-color: rgb(233, 233, 233);
+}
 .card__header {
   align-items: center;
   display: flex;
@@ -55,10 +59,11 @@
   margin: auto 0 5px;
   padding-left: 15px;
   position: relative;
+  width: max-content;
+  text-transform: lowercase;
 }
 
 .connection__paragraph::before {
-  background-color: #a86464;
   border-radius: 50%;
   content: "";
   display: block;
@@ -69,6 +74,20 @@
   width: 10px;
 }
 
+.connection__paragraph--connected,
+.connection__paragraph--disconnected,
+.connection__paragraph--poorConnection {
+  composes: connection__paragraph;
+}
+.connection__paragraph--connected::before {
+  background-color: #4ca835;
+}
+.connection__paragraph--poorConnection::before {
+  background-color: #e69138;
+}
+.connection__paragraph--disconnected::before {
+  background-color: #ff3232;
+}
 @media screen and (min-width: 470px) {
   .card__info {
     display: flex;

@@ -1,0 +1,16 @@
+.resizable {
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  border-radius: 0.75rem;
+  padding: 20px;
+  /* margin: 1rem; */
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  overflow: hidden;
+  touch-action: none;
+  box-sizing: border-box;
+  z-index: 3;
+}
