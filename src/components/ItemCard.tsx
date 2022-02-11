@@ -14,7 +14,11 @@ function ItemCard({ name, type, connection, onClick }: Props) {
   return (
     <div className={styles.container} onClick={onClick}>
       <div className={styles.card__header}>
-        <img src={imgPicker(type)} className={styles.image__wrapper} />
+        <img
+          src={imgPicker(type)}
+          className={styles.image__wrapper}
+          alt={`${formatType(type)} icon`}
+        />
         <h3 className={styles.title}>{name}</h3>
       </div>
       <div className={styles.card__info}>

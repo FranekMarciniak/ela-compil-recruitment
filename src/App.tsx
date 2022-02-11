@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import * as React from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./App.module.css";
 import ItemCard from "./components/ItemCard";
 import Layout from "./layout/Layout";
@@ -10,12 +11,13 @@ import CardModal from "./components/CardModal";
 
 function App() {
   const [devices, setDevices] = useState<ISmartDevice[] | []>([]);
+  const [deviceWithDetails, setDeviceWithDetails] = useState<any>(null);
   const [modal, setModal] = useState(false);
   const ws = useRef<WebSocket | null>(null);
 
   const fetchDevices = async () => {
     try {
-      const res = await fetch("http://localhost:3080/api/v1/devices", {
+      const res = await fetch("http://192.168.0.23:3080/api/v1/devices", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -26,13 +28,28 @@ function App() {
       console.log(err);
     }
   };
-
+  const fetchDeviceWithDetails = async (id: string) => {
+    try {
+      const res = await fetch(`http://192.168.0.23:3080/api/v1/devices/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setDeviceWithDetails(await res.json());
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     ws.current = new WebSocket("ws://192.168.0.23:3080/api/v1/refresh");
     fetchDevices();
-    if (ws) {
+    if (ws !== null) {
       ws.current.onopen = () => {
         console.log("Connected to the server");
+      };
+      ws.current.onmessage = (ev: any) => {
+        fetchDevices();
       };
     }
   }, []);
@@ -40,7 +57,7 @@ function App() {
   return (
     <Layout>
       <>
-        <CardModal open={modal} />
+        <CardModal open={modal} data={deviceWithDetails} />
         <div className={styles.items__grid}>
           {devices.map((device) => {
             return (
@@ -49,7 +66,10 @@ function App() {
                 connection={device.connectionState}
                 name={device.name}
                 type={device.type}
-                onClick={() => setModal(!modal)}
+                onClick={() => {
+                  setModal(modal);
+                  fetchDeviceWithDetails(device.id);
+                }}
               />
             );
           })}

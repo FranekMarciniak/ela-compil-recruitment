@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ICords } from "../types/Cords";
 import Interactive from "../utils/Interactive";
 import styles from "./CardModal.module.css";
-type Props = { open: boolean };
+type Props = { open: boolean; data: any };
 
 function CardModal({ open }: Props) {
   const [cords, setCords] = useState<ICords>({
