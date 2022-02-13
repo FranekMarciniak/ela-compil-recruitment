@@ -9,6 +9,7 @@ import { findDOMNode } from "react-dom";
 import interactFunc from "interactjs";
 import { ICords } from "../types/Cords";
 import { draggableOptions, resizableOptions } from "../utils/draggableOptions";
+import { Interactable } from "@interactjs/types";
 type Props = {
   children: ReactElement;
   cords: ICords;
@@ -24,7 +25,7 @@ type Props = {
 
 function Interactive({ children, cords, setCords }: Props) {
   const [node, setNode] = useState<ReactElement | HTMLElement | null>(null);
-  const [interact, setInteract] = useState<any>(null);
+  const [interact, setInteract] = useState<Interactable | null>(null);
   const clonedElement = cloneElement(children, {
     ref: (node: ReactElement) => setNode(node),
   });
@@ -79,7 +80,7 @@ function Interactive({ children, cords, setCords }: Props) {
             width: event.rect.width,
             height: event.rect.height,
             x_resize: x.toString(),
-            y_resize: y,
+            y_resize: y.toString(),
           });
           Object.assign(event.target.dataset, { x, y });
           Object.assign(event.target.style, {

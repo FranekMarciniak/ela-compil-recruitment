@@ -1,0 +1,25 @@
+.card__container {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  align-items: center;
+  min-width: fit-content;
+  padding: 5px 10px;
+}
+.connection__wrapper {
+  composes: card__container;
+}
+.power__wrapper {
+  composes: card__container;
+  flex-direction: column;
+  width: 100%;
+}
+.wattage__title {
+  font-size: 1.9em;
+  margin: 25px;
+  color: #5a5a5a;
+}
+.wattage__title img {
+  width: 35px;
+  margin-right: 10px;
+}

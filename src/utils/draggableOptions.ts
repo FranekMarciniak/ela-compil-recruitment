@@ -6,7 +6,7 @@ export const draggableOptions = {
     elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
   },
   modifiers: [
-    interact.modifiers.restrict({
+    interact.modifiers.restrictRect({
       restriction: "parent",
       endOnly: true,
     }),

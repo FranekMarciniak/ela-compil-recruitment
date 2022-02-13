@@ -5,7 +5,7 @@ function formatConnection(connection: string): string {
     case "disconnected":
       return connection;
     case "poorConnection":
-      return "poor Connection";
+      return "poor connection";
     default:
       return connection;
   }

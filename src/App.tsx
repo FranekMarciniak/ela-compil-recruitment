@@ -11,13 +11,15 @@ import CardModal from "./components/CardModal";
 
 function App() {
   const [devices, setDevices] = useState<ISmartDevice[] | []>([]);
-  const [deviceWithDetails, setDeviceWithDetails] = useState<any>(null);
+  const [deviceWithDetails, setDeviceWithDetails] = useState<
+    ISmartBulb | ISmartOutlet | ITempSensor | null
+  >(null);
   const [modal, setModal] = useState(false);
   const ws = useRef<WebSocket | null>(null);
 
   const fetchDevices = async () => {
     try {
-      const res = await fetch("http://192.168.0.23:3080/api/v1/devices", {
+      const res = await fetch("http://192.168.0.22:3080/api/v1/devices", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +32,7 @@ function App() {
   };
   const fetchDeviceWithDetails = async (id: string) => {
     try {
-      const res = await fetch(`http://192.168.0.23:3080/api/v1/devices/${id}`, {
+      const res = await fetch(`http://192.168.0.22:3080/api/v1/devices/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -41,14 +43,15 @@ function App() {
       console.log(err);
     }
   };
+
   useEffect(() => {
-    ws.current = new WebSocket("ws://192.168.0.23:3080/api/v1/refresh");
+    ws.current = new WebSocket("ws://192.168.186.110:3080/api/v1/refresh");
     fetchDevices();
     if (ws !== null) {
       ws.current.onopen = () => {
         console.log("Connected to the server");
       };
-      ws.current.onmessage = (ev: any) => {
+      ws.current.onmessage = (ev: MessageEvent) => {
         fetchDevices();
       };
     }
@@ -57,7 +60,11 @@ function App() {
   return (
     <Layout>
       <>
-        <CardModal open={modal} data={deviceWithDetails} />
+        <CardModal
+          open={modal}
+          setOpen={setModal}
+          data={deviceWithDetails as ISmartOutlet}
+        />
         <div className={styles.items__grid}>
           {devices.map((device) => {
             return (
@@ -67,7 +74,7 @@ function App() {
                 name={device.name}
                 type={device.type}
                 onClick={() => {
-                  setModal(modal);
+                  setModal(true);
                   fetchDeviceWithDetails(device.id);
                 }}
               />

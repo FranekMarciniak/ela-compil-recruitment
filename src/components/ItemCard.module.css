@@ -56,7 +56,7 @@
 
 .connection__paragraph {
   letter-spacing: 1.3px;
-  margin: auto 0 5px;
+  /* margin: auto 0; */
   padding-left: 15px;
   position: relative;
   width: max-content;
@@ -123,7 +123,7 @@
   }
 
   .connection__paragraph {
-    margin: auto 0 5px;
+    /* margin: auto; */
   }
 
   .image__wrapper {
