@@ -38,6 +38,7 @@
   height: 6px;
   border-radius: 7px;
   background-color: #3478f9;
+  transition: all 0.5s;
 }
 .color__wrapper {
   composes: card__section__wrapper;
@@ -49,4 +50,5 @@
   height: 50px;
   border-radius: 7px;
   border: 1px solid #949494;
+  transition: all 0.5s ease-in-out;
 }

@@ -51,12 +51,20 @@ function App() {
       ws.current.onopen = () => {
         console.log("Connected to the server");
       };
-      ws.current.onmessage = (ev: MessageEvent) => {
-        fetchDevices();
-      };
     }
   }, []);
-
+  useEffect(() => {
+    if (ws.current) {
+      ws.current.onmessage = (ev: MessageEvent) => {
+        const data = JSON.parse(ev.data);
+        fetchDevices();
+        if (deviceWithDetails && deviceWithDetails.id === data.id) {
+          console.log(data);
+          setDeviceWithDetails(data);
+        }
+      };
+    }
+  }, [deviceWithDetails]);
   return (
     <Layout>
       <>

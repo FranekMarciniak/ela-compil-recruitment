@@ -14,7 +14,10 @@ function Bulb({ data }: Props) {
         <h4 style={{ margin: "10px auto" }}>Brightness:</h4>
         <p
           className={styles.brightness__marker}
-          style={{ marginLeft: `calc(${data.brightness}% - 13px)` }}
+          style={{
+            marginLeft: `calc(${data.brightness}% - 13px)`,
+            transition: "all 0.5s",
+          }}
         >
           {data.brightness}
         </p>
