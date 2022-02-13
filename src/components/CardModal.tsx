@@ -6,6 +6,8 @@ import Close from "../images/close-line.png";
 import styles from "./CardModal.module.css";
 import cardStyles from "./ItemCard.module.css";
 import Outlet from "./cards/Outlet";
+import Bulb from "./cards/Bulb";
+import TempSensor from "./cards/TempSensor";
 import formatConnection from "../utils/connectionFormat";
 import ISmartBulb from "../types/SmartDevicesDetails/SmartBulb.interface";
 import ISmartTemperatureSensor from "../types/SmartDevicesDetails/SmartTemperatureSensor.interface";
@@ -22,12 +24,16 @@ function CardModal({ open, data, setOpen }: Props) {
     x_resize: "0",
     y_resize: "0",
     width: "400",
-    height: "400",
+    height: "420",
   });
-  const pickCard = () => {
-    switch (data.type) {
+  const pickCard = (type: string) => {
+    switch (type) {
       case "outlet":
-        return <Outlet data={data} />;
+        return <Outlet data={data as ISmartOutlet} />;
+      case "bulb":
+        return <Bulb data={data as ISmartBulb} />;
+      case "temperatureSensor":
+        return <TempSensor data={data as ISmartTemperatureSensor} />;
       default:
         break;
     }
@@ -48,7 +54,9 @@ function CardModal({ open, data, setOpen }: Props) {
                 <h2 className={styles.title__heading}>{data.name}</h2>
                 <p className={styles.type__paragraph}>{data.type}</p>
                 <div className={styles.connection__wrapper}>
-                  <p>Device status:</p>
+                  <div className={styles.connection__wrapper}>
+                    <p>Device status:</p>
+                  </div>
                   <p
                     style={{ marginLeft: "10px" }}
                     className={
@@ -60,7 +68,7 @@ function CardModal({ open, data, setOpen }: Props) {
                     {formatConnection(data.connectionState)}
                   </p>
                 </div>
-                {pickCard()}
+                {pickCard(data.type)}
               </>
             )}
           </div>

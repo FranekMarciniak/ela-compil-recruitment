@@ -58,7 +58,7 @@
   text-align: center;
   margin-bottom: 15px;
 }
-.card__container {
+.card__section__wrapper {
   display: flex;
   flex-flow: wrap row;
   justify-content: center;
@@ -67,5 +67,5 @@
   padding: 5px 10px;
 }
 .connection__wrapper {
-  composes: card__container;
+  composes: card__section__wrapper;
 }

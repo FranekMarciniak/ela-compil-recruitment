@@ -19,7 +19,7 @@ function App() {
 
   const fetchDevices = async () => {
     try {
-      const res = await fetch("http://192.168.0.22:3080/api/v1/devices", {
+      const res = await fetch("http://192.168.0.23:3080/api/v1/devices", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function App() {
   };
   const fetchDeviceWithDetails = async (id: string) => {
     try {
-      const res = await fetch(`http://192.168.0.22:3080/api/v1/devices/${id}`, {
+      const res = await fetch(`http://192.168.0.23:3080/api/v1/devices/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function App() {
   };
 
   useEffect(() => {
-    ws.current = new WebSocket("ws://192.168.186.110:3080/api/v1/refresh");
+    ws.current = new WebSocket("ws://192.168.0.23:3080/api/v1/refresh");
     fetchDevices();
     if (ws !== null) {
       ws.current.onopen = () => {

@@ -9,17 +9,23 @@
 .connection__wrapper {
   composes: card__section__wrapper;
 }
-.power__wrapper {
+.temperature__wrapper {
   composes: card__section__wrapper;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
-.wattage__title {
+.temperature__title {
   font-size: 1.9em;
   margin-top: 25px;
   color: #5a5a5a;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
 }
-.wattage__title img {
-  width: 35px;
+.temperature__img {
   margin-right: 10px;
+  width: 35px;
 }
