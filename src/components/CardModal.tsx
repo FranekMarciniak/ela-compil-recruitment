@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/global/GlobalState";
 import { ICords } from "../types/Cords";
 import ISmartOutlet from "../types/SmartDevicesDetails/SmartOutlet.interface";
 import Interactive from "../utils/Interactive";
@@ -11,13 +12,14 @@ import TempSensor from "./cards/TempSensor";
 import formatConnection from "../utils/connectionFormat";
 import ISmartBulb from "../types/SmartDevicesDetails/SmartBulb.interface";
 import ISmartTemperatureSensor from "../types/SmartDevicesDetails/SmartTemperatureSensor.interface";
+
 type Props = {
   open: boolean;
-  data: ISmartOutlet | ISmartBulb | ISmartTemperatureSensor;
   setOpen: (open: boolean) => void;
 };
 
-function CardModal({ open, data, setOpen }: Props) {
+function CardModal({ open, setOpen }: Props) {
+  const { deviceWithDetails: data } = useContext(GlobalContext);
   const [cords, setCords] = useState<ICords>({
     x_drag: "0",
     y_drag: "0",
