@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     // Saving ws instance to useRef hook
-    ws.current = new WebSocket("ws://ela-compil.herokuapp.com/api/v1/refresh");
+    ws.current = new WebSocket("wss://ela-compil.herokuapp.com/api/v1/refresh");
     // Fetch all devices on component load
     fetchDevices();
     if (ws !== null) {
