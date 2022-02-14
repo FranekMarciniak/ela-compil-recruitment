@@ -1,4 +1,4 @@
-import React, {
+import {
   cloneElement,
   useEffect,
   useState,
@@ -88,6 +88,7 @@ function Interactive({ children, cords, setCords }: Props) {
         },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [node, interact, draggableOptions, resizableOptions]);
 
   return clonedElement;
