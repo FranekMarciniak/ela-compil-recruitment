@@ -71,8 +71,6 @@ function Interactive({ children, cords, setCords }: Props) {
         ...resizableOptions,
         onmove: function (event: any) {
           let { x, y } = event.target.dataset;
-          console.log(x, y);
-          console.log(parseFloat(x) + event.deltaRect.right);
           x = (parseFloat(x) || 0) + event.deltaRect.right;
           y = (parseFloat(y) || 0) + event.deltaRect.bottom;
           setCords({

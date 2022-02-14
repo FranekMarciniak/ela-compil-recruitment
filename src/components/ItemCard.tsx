@@ -7,12 +7,16 @@ type Props = {
   name: string;
   type: string;
   connection: string;
+  active: boolean | null;
   onClick: () => void;
 };
 
-function ItemCard({ name, type, connection, onClick }: Props) {
+function ItemCard({ name, type, connection, onClick, active }: Props) {
   return (
-    <div className={styles.container} onClick={onClick}>
+    <div
+      className={active ? styles["container--active"] : styles.container}
+      onClick={onClick}
+    >
       <div className={styles.card__header}>
         <img
           src={imgPicker(type)}
