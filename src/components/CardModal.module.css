@@ -9,10 +9,10 @@
   position: absolute;
   border-radius: 0.75rem;
   padding: 20px;
-  background-color: rgb(233, 233, 233);
+  background-color: #e9e9e9;
   filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
     drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
-  color: black;
+  color: #000;
   overflow: hidden;
   touch-action: none;
   z-index: 3;
@@ -22,9 +22,10 @@
   align-items: center;
   justify-content: center;
 }
+
 .exit__button {
   margin-left: auto;
-  background-color: rgb(255, 71, 71);
+  background-color: #ff4747;
   font-size: 1.1em;
   color: #fff;
   padding: 2px;
@@ -38,15 +39,16 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+
 .exit__button:hover {
-  background-color: rgb(255, 27, 27);
+  background-color: #ff1b1b;
 }
 
 .title__heading {
   width: 100%;
   font-size: 1.3em;
   text-align: center;
-  margin: 15px 0 10px 0;
+  margin: 15px 0 10px;
   position: relative;
 }
 
@@ -58,6 +60,7 @@
   text-align: center;
   margin-bottom: 15px;
 }
+
 .card__section__wrapper {
   display: flex;
   flex-flow: wrap row;
@@ -66,6 +69,7 @@
   min-width: fit-content;
   padding: 5px 10px;
 }
+
 .connection__wrapper {
   composes: card__section__wrapper;
 }

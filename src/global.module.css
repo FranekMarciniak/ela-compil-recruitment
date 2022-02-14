@@ -17,13 +17,3 @@ h3 {
 h4 {
   margin: auto 0;
 }
-:global(.dot__span::before) {
-  border-radius: 50%;
-  content: "";
-  display: block;
-  height: 10px;
-  left: 0;
-  position: absolute;
-  top: 4px;
-  width: 10px;
-}

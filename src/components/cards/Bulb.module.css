@@ -6,9 +6,11 @@
   min-width: fit-content;
   padding: 5px 10px;
 }
+
 .connection__wrapper {
   composes: card__section__wrapper;
 }
+
 .brightness__wrapper {
   composes: card__section__wrapper;
   flex-direction: column;
@@ -28,23 +30,27 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 50% 100%, 0% 60%);
   color: #fff;
 }
+
 .brightness__bar__wrapper {
   width: 100%;
   height: 5px;
   border-radius: 7px;
-  border: 1px dotted rgb(184, 184, 184);
+  border: 1px dotted #b8b8b8;
 }
+
 .brightness__bar {
   height: 6px;
   border-radius: 7px;
   background-color: #3478f9;
   transition: all 0.5s;
 }
+
 .color__wrapper {
   composes: card__section__wrapper;
   display: flex;
   flex-direction: column;
 }
+
 .color__indicator {
   width: 50px;
   height: 50px;
