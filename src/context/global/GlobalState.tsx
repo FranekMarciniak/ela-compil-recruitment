@@ -31,11 +31,6 @@ type Props = {
 };
 
 const GlobalState = (props: Props) => {
-  const initialState = {
-    error: null,
-    devices: [],
-    deviceWithDetails: null,
-  };
   const [state, dispatch] = useReducer(globalReducer, initialState);
   const ws = useRef<WebSocket | null>(null);
 
@@ -70,7 +65,6 @@ const GlobalState = (props: Props) => {
         }
       );
       const data = await res.json();
-      console.log(data);
       dispatch({ type: RECIVE_DEVICE_WITH_DETAILS, payload: data });
     } catch (err) {
       console.log(err);
@@ -112,7 +106,7 @@ const GlobalState = (props: Props) => {
       value={{
         devices: state.devices,
         deviceWithDetails: state.deviceWithDetails,
-        error: null,
+        error: state.error,
         fetchDevices,
         fetchDeviceWithDetails,
       }}

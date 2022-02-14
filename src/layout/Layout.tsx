@@ -5,7 +5,7 @@ type Props = {
   children?: JSX.Element | JSX.Element[];
 };
 
-function layout({ children }: Props) {
+function Layout({ children }: Props) {
   return (
     <div className={styles.container}>
       <Header />
@@ -14,4 +14,4 @@ function layout({ children }: Props) {
   );
 }
 
-export default layout;
+export default Layout;
