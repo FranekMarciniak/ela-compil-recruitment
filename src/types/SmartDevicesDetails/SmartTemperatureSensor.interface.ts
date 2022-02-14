@@ -2,6 +2,6 @@ export default interface ISmartTemperatureSensor {
   type: "temperatureSensor";
   id: string;
   name: string;
-  connectionState: string; // 'connected', 'disconnected' or 'poorConnection'
+  connectionState: "connected" | "disconnected" | "poorConnection";
   temperature: number; // in Celsius
 }
