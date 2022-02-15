@@ -1,4 +1,10 @@
-import { createContext, useEffect, useReducer, useRef } from "react";
+import {
+  createContext,
+  useEffect,
+  useLayoutEffect,
+  useReducer,
+  useRef,
+} from "react";
 import globalReducer from "./globalReducer";
 import ISmartDevice from "../../types/SmartDevice.interface";
 import ISmartBulb from "../../types/SmartDevicesDetails/SmartBulb.interface";
@@ -88,7 +94,7 @@ const GlobalState = (props: Props) => {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ws.current) return;
     ws.current.onmessage = (ev: MessageEvent) => {
       // Whenever websocket emits event fetch all devices and check if opened modal contains emitted device,
