@@ -26,7 +26,7 @@ function CardModal({ open, setOpen }: Props) {
     x_resize: "0",
     y_resize: "0",
     width: "400",
-    height: "420",
+    height: "440",
   });
   const pickCard = (type: string) => {
     switch (type) {
